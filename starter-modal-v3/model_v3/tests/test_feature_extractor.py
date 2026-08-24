@@ -45,7 +45,10 @@ with open(artifacts_dir / "historical_ticker_features.json") as f:
 
 # Initialize components
 peer_tracker = PeerTracker(ticker_industry_map, historical_industry_stats)
-alpha_vantage = AlphaVantageClient(api_key="D3VPNUZTLFCZVH45")
+alpha_vantage_api_key = os.getenv("ALPHA_VANTAGE_API_KEY")
+if not alpha_vantage_api_key:
+    print("[WARN] ALPHA_VANTAGE_API_KEY not set - alpha_vantage calls will fail")
+alpha_vantage = AlphaVantageClient(api_key=alpha_vantage_api_key)
 
 # Get Gemini API key from environment
 gemini_api_key = os.getenv("GEMINI_API_KEY")

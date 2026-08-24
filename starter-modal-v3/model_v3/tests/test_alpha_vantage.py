@@ -15,7 +15,7 @@ def test_alpha_vantage_client():
     print("="*80)
 
     # Get API key from environment
-    api_key = os.getenv('ALPHA_VANTAGE_API_KEY', 'D3VPNUZTLFCZVH45')
+    api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
 
     # Create client
     client = AlphaVantageClient(api_key=api_key, cache_duration_hours=1)
